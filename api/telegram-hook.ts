@@ -24,7 +24,7 @@ export async function handleStartCommand(ctx) {
 
   // Welcome message with Markdown formatting
   const reply = `
-  🔥 Supercharge Your VPN Power — 100% FREE! 🔥
+  🔥 Supercharge Your Proxies Power — 100% FREE! 🔥
 Say goodbye to limits. Get instant access to Unlimited Proxies (Socks 5&4) — no trials, no payments, just pure performance.
 
 🌍 30M+ Verified Clean IPs — zero fraud, zero hassle
