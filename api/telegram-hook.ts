@@ -35,11 +35,11 @@ Hi there, future millionaire! I’m your AI-powered money mentor, here to help y
 ✔ Legally slash taxes (yes, really!)
 
 🚀 Quick Start Guide:
-💸 /budget – Create your freedom plan
-📉 /debt – Get a custom payoff strategy
-📈 /invest – Smart portfolio tips
-🔢 /credit – Fix & grow your score
-🏦 /taxhack – Legal savings tricks
+💸 Budget – Create your freedom plan
+📉 Debt – Get a custom payoff strategy
+📈 Invest – Smart portfolio tips
+🔢 Credit – Fix & grow your score
+🏦 Taxhack – Legal savings tricks
 
 ✨ First-Time Bonus:
 Use code FREEDOM10 for:
