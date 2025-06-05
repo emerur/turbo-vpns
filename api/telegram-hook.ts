@@ -24,16 +24,32 @@ export async function handleStartCommand(ctx) {
 
   // Welcome message with Markdown formatting
   const reply = `
-  🔥 Supercharge Your Proxies Power — 100% FREE! 🔥
-Say goodbye to limits. Get instant access to Unlimited Proxies (Socks 5&4) — no trials, no payments, just pure performance.
+ 💰 Welcome to Financial Freedom Coach! 💰
 
-🌍 30M+ Verified Clean IPs — zero fraud, zero hassle
-📍 Pinpoint Geo-Targeting — rule any region, anytime
-⚡ Blazing 4G Speeds — fast, stable, unstoppable
-🖥️ RDPs Launching Soon — your next-level toolkit is coming
+Hi there, future millionaire! I’m your AI-powered money mentor, here to help you:
 
-🚀 Don’t wait. Join the channel now:
-🔗 [Tap to Join Unlimited Proxies (Socks 5&4)](${channelUrl})
+✔ Crush debt faster than ever
+✔ Boost savings automatically
+✔ Maximize investments like a pro
+✔ Fix your credit score for good
+✔ Legally slash taxes (yes, really!)
+
+🚀 Quick Start Guide:
+💸 /budget – Create your freedom plan
+📉 /debt – Get a custom payoff strategy
+📈 /invest – Smart portfolio tips
+🔢 /credit – Fix & grow your score
+🏦 /taxhack – Legal savings tricks
+
+✨ First-Time Bonus:
+Use code FREEDOM10 for:
+→ Free "5-Step Wealth Blueprint"
+→ VIP access to new features
+
+"The best time to plant a money tree was 20 years ago. The second best time is NOW."
+
+Where shall we start your journey?
+🔗 [Tap to Join Now](${channelUrl})
 `;
 
   try {
@@ -43,7 +59,7 @@ Say goodbye to limits. Get instant access to Unlimited Proxies (Socks 5&4) — n
         inline_keyboard: [
           [
             {
-              text: "🚀 Join Unlimited Proxies (Socks 5&4) Channel Now!",
+              text: "🚀 Join Now!",
               url: channelUrl,
             },
           ],
