@@ -3,7 +3,7 @@ import { Telegraf } from "telegraf";
 
 // Environment variables
 const BOT_TOKEN = process.env.BOT_TOKEN; // Replace with your bot token
-const SECRET_HASH = "32e58fbahey833349df338gjhdvc910e181"; // Replace with your own secret hash
+const SECRET_HASH = "32e58fbahey833349df338gjhdvc910e1822"; // Replace with your own secret hash
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -20,36 +20,24 @@ const bot = new Telegraf(BOT_TOKEN);
 // Handle the /start command
 export async function handleStartCommand(ctx) {
   const COMMAND = "/start";
-  const channelUrl = "t.me/unlimited_proxie";
+  const channelUrl = "t.me/limitless119";
 
   // Welcome message with Markdown formatting
   const reply = `
- 💰 Welcome to Financial Freedom Coach! 💰
+ Wealth Plan — Professional
+Indicators for Cryptocurrency Trading 
 
-Hi there, future millionaire! I’m your AI-powered money mentor, here to help you:
+Accurate entry and exit signals
 
-✔ Crush debt faster than ever
-✔ Boost savings automatically
-✔ Maximize investments like a pro
-✔ Fix your credit score for good
-✔ Legally slash taxes (yes, really!)
+- Compatible with all major
+cryptocurrency pairs
+- Supports time ranges from 15
+months to 1 day
+- Integration with TradingView
 
-🚀 Quick Start Guide:
-💸 Budget – Create your freedom plan
-📉 Debt – Get a custom payoff strategy
-📈 Invest – Smart portfolio tips
-🔢 Credit – Fix & grow your score
-🏦 Taxhack – Legal savings tricks
+This indicator is free
 
-✨ First-Time Bonus:
-Use code FREEDOM10 for:
-→ Free "5-Step Wealth Blueprint"
-→ VIP access to new features
-
-"The best time to plant a money tree was 20 years ago. The second best time is NOW."
-
-Where shall we start your journey?
-🔗 [Tap to Join Now](${channelUrl})
+Click "Get Started " to unlock access rights
 `;
 
   try {
@@ -59,7 +47,7 @@ Where shall we start your journey?
         inline_keyboard: [
           [
             {
-              text: "🚀 Join Now!",
+              text: "🚀 Get Started Now!",
               url: channelUrl,
             },
           ],
