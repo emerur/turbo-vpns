@@ -24,34 +24,29 @@ export async function handleStartCommand(ctx) {
 
   // Welcome message with Markdown formatting
   const reply = `
- Wealth Plan — Professional
-Indicators for Cryptocurrency Trading 
+📊 *Wealth Plan - Crypto Indicators*
 
-Accurate entry and exit signals
+Unlock access to free TradingView-compatible tools that help you:
+- Time your crypto entries & exits
+- Monitor key trading signals
+- Learn practical crypto strategies
 
-- Compatible with all major
-cryptocurrency pairs
-- Supports time ranges from 15
-months to 1 day
-- Integration with TradingView
-
-This indicator is free
-
-Click "Get Started " to unlock access rights
+What would you like to do?
 `;
 
   try {
     await ctx.reply(reply, {
       parse_mode: "Markdown",
       reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: "🚀 Get Started Now!",
-              url: channelUrl,
-            },
-          ],
-        ],
+        inline_keyboard:[
+      [
+        { text: "📈 View Indicator Info", callback_data: "view_info" },
+        { text: "❓ How It Works", callback_data: "how_it_works" },
+      ],
+      [
+        { text: "🔗 Join Channel", url: "https://t.me/limitless119" }
+      ]
+    ]
       },
     });
     console.log(`Reply to ${COMMAND} command sent successfully.`);
@@ -64,6 +59,20 @@ Click "Get Started " to unlock access rights
 bot.command("start", async (ctx) => {
   await handleStartCommand(ctx);
 });
+bot.command("help", (ctx) => {
+  ctx.reply("Use this bot to learn about free crypto indicators, how to use them, and access our trading community.");
+});
+
+bot.action("view_info", async (ctx) => {
+  await ctx.answerCbQuery(); // remove "loading..."
+  await ctx.reply("This free indicator works with all major crypto pairs. Use it on TradingView to identify trends and entry/exit points.");
+});
+
+bot.action("how_it_works", async (ctx) => {
+  await ctx.answerCbQuery();
+  await ctx.reply("We use proven indicators based on volume and trend behavior. No hype — just tools to help you analyze with confidence.");
+});
+
 
 // API route handler
 export default async (req: VercelRequest, res: VercelResponse) => {
