@@ -3,50 +3,44 @@ import { Telegraf } from "telegraf";
 
 // Environment variables
 const BOT_TOKEN = process.env.BOT_TOKEN; // Replace with your bot token
-const SECRET_HASH = "32e58fbahey833349df338gjhdvc910e1822"; // Replace with your own secret hash
+///api.telegram.org/bot{token}/setWebhook?url={url}/api/telegram-hook?secret_hash=32e58fbahey833349df3383dc910e180
+//api.telegram.org/bot{token}setWebhook?url=https://mobile-proxies.vercel.app/api/telegram-hook?secret_hash=32e58fbahey833349df3383dc910e180
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
-
-// get webhook information
-// GET https://api.telegram.org/bot{my_bot_token}/getWebhookInfo
-
-//api.telegram.org/bot{token}/setWebhook?url={url}/api/telegram-hook?secret_hash={secret_hash}
-
-// Initialize the bot
 const bot = new Telegraf(BOT_TOKEN);
 
 // Handle the /start command
 export async function handleStartCommand(ctx) {
   const COMMAND = "/start";
-  const channelUrl = "t.me/limitless119";
+  const { message } = ctx;
 
   // Welcome message with Markdown formatting
   const reply = `
-📊 *Wealth Plan - Crypto Indicators*
+  Unlock 100% Free VPN Access — No Limits, No Trials
 
-Unlock access to free TradingView-compatible tools that help you:
-- Time your crypto entries & exits
-- Monitor key trading signals
-- Learn practical crypto strategies
+Enjoy fast, secure, and private VPN connections with zero cost.
+No sign-ups. No restrictions.
 
-What would you like to do?
-`;
+Instantly connect to global servers
+
+Stay protected on public Wi-Fi and keep your data safe
+
+High-speed performance for smooth browsing
+
+Works on all devices — anytime, anywhere
+
+Ready to browse without borders? Get today's list below
+ `;
 
   try {
     await ctx.reply(reply, {
       parse_mode: "Markdown",
       reply_markup: {
-        inline_keyboard:[
-      [
-        { text: "📈 View Indicator Info", callback_data: "view_info" },
-        { text: "❓ How It Works", callback_data: "how_it_works" },
-      ],
-      [
-        { text: "🔗 Join Channel", url: "https://t.me/limitless119" }
-      ]
-    ]
+        inline_keyboard: [
+          [{ text: "Get Socks5 list", callback_data: "socks_5" }],
+          [{ text: "Get Socks5 list", callback_data: "socks_5" }],
+          [{ text: "Get Socks4 list", callback_data: "socks_4" }],
+          [{ text: "Get Socks4 list", callback_data: "socks_4" }],
+        ],
       },
     });
     console.log(`Reply to ${COMMAND} command sent successfully.`);
@@ -55,45 +49,45 @@ What would you like to do?
   }
 }
 
+// Socks 5
+bot.action("socks_5", async (ctx) => {
+  await ctx.answerCbQuery();
+  await ctx.replyWithDocument({
+    url: "https://github.com/emerur/unlimited_bot/blob/main/socks5.txt", // Replace with your actual file URL
+    filename: "Socks5", // Optional: custom filename
+  });
+});
+// Socks 4
+bot.action("socks_4", async (ctx) => {
+  await ctx.answerCbQuery();
+  await ctx.replyWithDocument({
+    url: "https://github.com/emerur/unlimited_bot/blob/main/socks4.txt", // Replace with your actual file URL
+    filename: "Socks4", // Optional: custom filename
+  });
+});
+
 // Register the /start command handler
 bot.command("start", async (ctx) => {
   await handleStartCommand(ctx);
 });
-bot.command("help", (ctx) => {
-  ctx.reply("Use this bot to learn about free crypto indicators, how to use them, and access our trading community.");
-});
 
-bot.action("view_info", async (ctx) => {
-  await ctx.answerCbQuery(); // remove "loading..."
-  await ctx.reply("This free indicator works with all major crypto pairs. Use it on TradingView to identify trends and entry/exit points.");
-});
-
-bot.action("how_it_works", async (ctx) => {
-  await ctx.answerCbQuery();
-  await ctx.reply("We use proven indicators based on volume and trend behavior. No hype — just tools to help you analyze with confidence.");
-});
-
-
-// API route handler
+// Webhook handler
 export default async (req: VercelRequest, res: VercelResponse) => {
   try {
     const { body, query } = req;
 
-    // Set webhook if requested
     if (query.setWebhook === "true") {
-      const webhookUrl = `${baseUrl}/api/telegram-hook?secret_hash=${SECRET_HASH}`;
-      const isSet = await bot.telegram.setWebhook(webhookUrl);
-      console.log(`Set webhook to ${webhookUrl}: ${isSet}`);
+      const webhookUrl = `${process.env.WEBHOOK_URL}`;
+      const success = await bot.telegram.setWebhook(webhookUrl);
+      // console.log("Webchook set:", webhookUrl, success);
+      return res.status(200).send("OK");
     }
 
-    // Handle incoming updates from Telegram
-    if (query.secret_hash == SECRET_HASH) {
-      await bot.handleUpdate(body);
-    }
-  } catch (error) {
-    console.error("Error handling Telegram update:", error.toString());
+    await bot.handleUpdate(body);
+    return res.status(200).send("OK");
+  } catch (err) {
+    return res.json({ error: "Internal server error" }, { status: 500 });
   }
 
-  // Acknowledge the request with Telegram
-  res.status(200).send("OK");
+  // res.status(200).send("OK");
 };
