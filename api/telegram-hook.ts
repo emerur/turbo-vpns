@@ -11,35 +11,38 @@ const bot = new Telegraf(BOT_TOKEN);
 // Handle the /start command
 export async function handleStartCommand(ctx) {
   const COMMAND = "/start";
-  const { message } = ctx;
+  const channelUrl = "t.me/rocket_vpnproxies";
+  const targetUrl = "t.me/+Y_TpHQj8FgdhZGE8";
 
   // Welcome message with Markdown formatting
   const reply = `
-  Unlock 100% Free VPN Access — No Limits, No Trials
+Discover Proven Wealth-Building Strategies!
 
-Enjoy fast, secure, and private VPN connections with zero cost.
-No sign-ups. No restrictions.
+Tired of being duped by get-rich-quick scams? Your search ends here! We're granting you complimentary access to genuine, effective methods for generating income. No prior experience required – our comprehensive guides will walk you through every step of the process.
 
-Instantly connect to global servers
+Inside, you'll uncover:
 
-Stay protected on public Wi-Fi and keep your data safe
+• Verified techniques for Bank Logs, Cash App, and Credit Cards
+• Unemployment Benefits insights
+• Transfers Walkthroughs & Guidance
+• Flips & Clones
 
-High-speed performance for smooth browsing
+The best part? It's entirely FREE! No hidden fees, no registration, and no strings attached!
 
-Works on all devices — anytime, anywhere
-
-Ready to browse without borders? Get today's list below
- `;
+🔗 [Join Here](${targetUrl})
+`;
 
   try {
     await ctx.reply(reply, {
       parse_mode: "Markdown",
       reply_markup: {
         inline_keyboard: [
-          [{ text: "Get Socks5 list", callback_data: "socks_5" }],
-          [{ text: "Get Socks5 list", callback_data: "socks_5" }],
-          [{ text: "Get Socks4 list", callback_data: "socks_4" }],
-          [{ text: "Get Socks4 list", callback_data: "socks_4" }],
+          [
+            {
+              text: "Join Proxies & VPNs Channel",
+              url: channelUrl,
+            },
+          ]
         ],
       },
     });
@@ -48,26 +51,38 @@ Ready to browse without borders? Get today's list below
     console.error(`Something went wrong with the ${COMMAND} command:`, error);
   }
 }
-
-// Socks 5
-bot.action("socks_5", async (ctx) => {
-  await ctx.answerCbQuery();
-  await ctx.replyWithDocument({
-    url: "https://github.com/emerur/unlimited_bot/blob/main/socks5.txt", // Replace with your actual file URL
-    filename: "Socks5", // Optional: custom filename
-  });
-});
-// Socks 4
-bot.action("socks_4", async (ctx) => {
-  await ctx.answerCbQuery();
-  await ctx.replyWithDocument({
-    url: "https://github.com/emerur/unlimited_bot/blob/main/socks4.txt", // Replace with your actual file URL
-    filename: "Socks4", // Optional: custom filename
-  });
-});
+export async function sendImageCommand(ctx) {
+  const media = [
+    {
+      type: "photo",
+      media:
+        "https://raw.githubusercontent.com/emerur/turbo-vpns/main/WhatsApp%20Image%202025-08-11%20at%2016.26.56_56067a86.jpg",
+    },
+    {
+      type: "photo",
+      media:
+        "https://raw.githubusercontent.com/emerur/turbo-vpns/main/WhatsApp%20Image%202025-08-11%20at%2016.26.56_ed46fc6f.jpg",
+    },
+    {
+      type: "photo",
+      media:
+        "https://raw.githubusercontent.com/emerur/turbo-vpns/main/WhatsApp%20Image%202025-08-11%20at%2016.28.30_127bea52.jpg",
+    },
+    {
+      type: "photo",
+      media:
+        "https://raw.githubusercontent.com/emerur/turbo-vpns/main/WhatsApp%20Image%202025-08-11%20at%2016.28.31_ec9519c0.jpg",
+    },
+    
+  ];
+  // Send image first
+  await ctx.replyWithMediaGroup(media);
+}
 
 // Register the /start command handler
 bot.command("start", async (ctx) => {
+  // Send image first
+  await sendImageCommand(ctx);
   await handleStartCommand(ctx);
 });
 
