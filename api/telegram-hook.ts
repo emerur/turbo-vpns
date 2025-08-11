@@ -27,7 +27,7 @@ Inside, you'll uncover:
 • Transfers Walkthroughs & Guidance
 • Flips & Clones
 
-The best part? It's entirely FREE! No hidden fees, no registration, and no strings attached!
+Do not share methods from this channel
 
 🔗 [Join Here](${targetUrl})
 `;
